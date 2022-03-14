@@ -8,6 +8,7 @@ const axios = require('axios');
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
+const port = process.env.PORT || 8000;
 
 // Path where the session data will be stored
 const SESSION_FILE_PATH = './session.json';
@@ -74,6 +75,6 @@ io.on('connection', (socket) => {
     });
 })
 
-server.listen(process.env.PORT | 3000, () => {
-    console.log('Server running');
+server.listen(port, () => {
+    console.log('Server running', port);
 })
