@@ -25,7 +25,11 @@ app.get('/', (req, res) => {
 const client = new Client({
     authStrategy: new LegacySessionAuth({
         session: sessionData
-    })
+    }),
+    puppeteer: {
+        headless: true,
+        args: ['--no-sandbox']
+    }
 });
 
 client.on('message', async msg => {
